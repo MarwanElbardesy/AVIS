@@ -1,6 +1,19 @@
 .venv/
-temp/
-pip-cache/
 __pycache__/
+*.pyc
 *.py[cod]
+.pytest_cache/
 .ipynb_checkpoints/
+pip-cache/
+temp/
+# Raw data is never committed (license + size)
+data/raw/*
+!data/raw/scania/
+data/raw/scania/*
+!data/raw/scania/.gitkeep
+data/processed/
+# Generated artifacts
+models/artifacts/
+reports/**/*.json
+# EDA: commit the Markdown report + figures, never the raw results JSON
+!reports/eda/.gitkeep
