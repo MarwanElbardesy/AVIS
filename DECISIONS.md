@@ -1,4 +1,5 @@
 # Architecture Decisions
+> **AVIS — Advanced Vehicle Intelligence System** *(formerly CVI — Commercial Vehicle Intelligence)*
 
 ## D1 - Training and test loading are separate
 `load_scania_train()` never touches the test file; `load_scania_test()` is reserved for final

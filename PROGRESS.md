@@ -1,8 +1,9 @@
-# CVI Progress
+# AVIS Progress
+> **Advanced Vehicle Intelligence System** *(formerly CVI — Commercial Vehicle Intelligence)*
 
 ## Status
 * **Current State**: Milestone 2d-2 Complete (2026-11-17).
-* **Test Suite**: 205 tests passing (100% unit test coverage).
+* **Test Suite**: 205 tests passing (100% pass rate across synthetic unit test suite).
 * **Next Action**: Milestone 2d-3 (figure generation from training CSV + JSON).
 
 ## Done

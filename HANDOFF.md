@@ -1,10 +1,11 @@
-# CVI v1.0 — Handoff
+# AVIS v1.0 — Handoff
+> **Advanced Vehicle Intelligence System** *(formerly CVI — Commercial Vehicle Intelligence)*
 
 Last handoff: 2026-11-16
 
 ## Project goal
 
-Build CVI (Commercial Vehicle Intelligence) v1.0: a reliable, portfolio-ready predictive-maintenance system using the Scania APS failure-prediction dataset.
+Build AVIS (Advanced Vehicle Intelligence System, formerly CVI — Commercial Vehicle Intelligence) v1.0: a reliable, portfolio-ready predictive-maintenance system using the Scania APS failure-prediction dataset.
 
 The repository is the source of truth. Do not rely on prior AI chat history when the project files can establish the current state.
 
@@ -17,7 +18,7 @@ The repository is the source of truth. Do not rely on prior AI chat history when
 - Do not modify Milestone 1 code unless explicitly approved.
 - Keep development and model selection strictly training-data-only.
 - Do not open, inspect, or use the official test dataset until the project’s final evaluation stage is explicitly approved.
-- Keep scope limited to CVI v1.0. Defer research extensions and v2.0 ideas.
+- Keep scope limited to AVIS v1.0 (formerly CVI v1.0). Defer research extensions and v2.0 ideas.
 - Run relevant tests after changes and report exact results.
 - Update `PROGRESS.md` and `DECISIONS.md` when project status or technical decisions change.
 - Before finishing a work session, record what changed, tests run, unresolved issues, and the exact next action in this file.
