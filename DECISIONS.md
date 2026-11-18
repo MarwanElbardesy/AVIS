@@ -122,6 +122,21 @@ each correlation and which way significant missingness points. Nothing existing 
 * Mutation checks found that a first fixture with symmetric counts could not detect a swapped direction
   or an and/or error; a fixture with deliberately distinct counts (5/2/3/1/4) now guards both.
 
+## D23 - Rule-Based Report Interpretation Layer (2d-2)
+The interpretation layer (`src/eda/interpret.py`) translates the static EDA results JSON into structured, evidence-backed statements without statistical recomputation or disk I/O:
+* **Evidence Traceability**: Every statement and recommendation is strictly verified against its finding's *own* `evidence` dictionary. The evidence dictionary captures exact raw metrics and threshold metadata. Tests enforce that *every* empirical number, threshold, and percentage in the statement is present in the finding's evidence dictionary.
+* **Epistemic Guardrails**: Purely descriptive phrasing is enforced; causal assertions ("causes", "proves", "leads to failure", "drop offline", "sensor outages") are strictly prohibited. Algorithmic and modeling observations are labeled as exploratory considerations for subsequent CV evaluation, not definitive conclusions.
+* **Status Semantics & Precedence**:
+  - `ATTENTION`: Empirical condition requiring explicit pipeline intervention, modeling safeguards, or evaluation caution (e.g. constant columns, extreme class imbalance, leakage flags).
+  - `INFORMATIVE`: Domain observation or statistical structure that characterizes the dataset without implying data invalidity or a defect (e.g. candidate histogram prefixes, co-missing clusters, non-zero correlation pairs).
+  - `NOMINAL`: Metric or screening check is within normal expectations; no alerts, flags, or interventions required.
+  - `UNAVAILABLE`: Evidence key is absent from the artifact (e.g. older schema version missing additive fields).
+  - **Precedence Hierarchy**: System- and section-level aggregation follows strict precedence: `ATTENTION > INFORMATIVE > NOMINAL > UNAVAILABLE`.
+* **Imbalance Threshold Rationale**: A diagnostic threshold of `10.0:1` (`IMBALANCE_ATTENTION_RATIO`) is established to flag severe class imbalance (positive prevalence < 10%), warning downstream modeling that standard accuracy is structurally invalid. This diagnostic threshold is explicitly distinguished from the D5 asymmetric operational cost ratio (`50:1` = $500 FN / $10 FP).
+* **Leakage Screen Validation**: Leakage metrics require mandatory subkeys and finite numeric values (`NaN` and `Inf` are rejected). Leakage review flags are framed as prompts for manual inspection rather than definitive verdicts (D19). Explicit disclosures document that the Scania APS dataset lacks vehicle identifiers (OM6), meaning absence of row-order leakage flags cannot rule out multi-snapshot dependencies from identical trucks.
+* **Graceful Degradation**: Optional fields from schema additions (such as D22 directional splits and overlap counts) explicitly set `status="UNAVAILABLE"` with `available: False` when absent rather than failing or fabricating figures.
+* **Testing & Determinism**: Tested for 100% rule-branch coverage, strict anti-hallucination number verification (negative tests ensure single unsupported numbers trigger test failures), status boundary transitions, and byte-identical determinism.
+
 ## Open methodology issues (found on review; none fixed yet, Milestone 1 untouched)
 | # | Issue | Owner |
 |---|-------|-------|

@@ -1,9 +1,9 @@
 # CVI Progress
 
 ## Status
-* **Current State**: Restored to Milestone 2d-1 (2026-11-17).
-* **Test Suite**: 192 tests passing (100% synthetic unit test coverage).
-* **Next Action**: Milestone 2d-2 (rule-based interpretation text layer from `eda_results.json`).
+* **Current State**: Milestone 2d-2 Complete (2026-11-17).
+* **Test Suite**: 205 tests passing (100% unit test coverage).
+* **Next Action**: Milestone 2d-3 (figure generation from training CSV + JSON).
 
 ## Done
 - Project structure, Python 3.12 venv, core libraries
@@ -19,7 +19,7 @@
   - [x] 2c: distributions, relationships (rank correlation, near-duplicate clusters, histogram verification), univariate signal (descriptive), leakage/ordering checks, repo-wide test-set guard
   - [ ] 2d: Markdown report + figures
     - [x] 2d-1: additive fields (pair/cluster shared-row counts; significant/notable direction splits) (192 tests total)
-    - [ ] 2d-2: rule-based interpretation text layer (numbers templated from the JSON) [PENDING]
+    - [x] 2d-2: rule-based interpretation text layer (numbers templated from the JSON) (205 tests total)
     - [ ] 2d-3: figures (training CSV + JSON; test set never opened) [PENDING]
     - [ ] 2d-4: `build_report` CLI, determinism tests, docs [PENDING]
 
